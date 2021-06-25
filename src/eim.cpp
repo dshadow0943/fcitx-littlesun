@@ -44,7 +44,7 @@
 #include "common.h"
 
 extern "C" {
-    FCITX_DEFINE_PLUGIN(fcitx_libpinyin, ime2, FcitxIMClass2) = {
+    FCITX_DEFINE_PLUGIN(fcitx_littlesun, ime2, FcitxIMClass2) = {
         FcitxLittleSunCreate,
         FcitxLittleSunDestroy,
         FcitxLittleSunReloadConfig,
@@ -110,8 +110,8 @@ void FcitxLittleSun::save() {
 }
 
 
-FcitxLittleSun::FcitxLittleSun(FcitxLittleSunAddonInstance* libpinyinaddon) :
-    m_owner(libpinyinaddon)
+FcitxLittleSun::FcitxLittleSun(FcitxLittleSunAddonInstance* littlesunaddon) :
+    m_owner(littlesunaddon)
 {
 }
 
@@ -128,16 +128,16 @@ FcitxLittleSun::~FcitxLittleSun()
  **/
 void* FcitxLittleSunCreate(FcitxInstance* instance)
 {
-    FcitxLittleSunAddonInstance* libpinyinaddon = (FcitxLittleSunAddonInstance*) fcitx_utils_malloc0(sizeof(FcitxLittleSunAddonInstance));
-    libpinyinaddon->owner = instance;
+    FcitxLittleSunAddonInstance* littlesunaddon = (FcitxLittleSunAddonInstance*) fcitx_utils_malloc0(sizeof(FcitxLittleSunAddonInstance));
+    littlesunaddon->owner = instance;
 
-    libpinyinaddon->pinyin = new FcitxLittleSun(libpinyinaddon);
+    littlesunaddon->pinyin = new FcitxLittleSun(littlesunaddon);
 
     FcitxInstanceRegisterIM(instance,
-                            libpinyinaddon->pinyin,
+                            littlesunaddon->pinyin,
                             "keyboard-littlesun",
                             "小太阳键盘",
-                            "pinyin-libpinyin",
+                            "littlesun",
                             FcitxLittleSunInit,
                             FcitxLittleSunReset,
                             FcitxLittleSunDoInput,
@@ -150,10 +150,10 @@ void* FcitxLittleSunCreate(FcitxInstance* instance)
                             "zh_CN"
                            );
 
-    libpinyinaddon->bus = new FcitxLittleSunBus(libpinyinaddon);
-    libpinyinaddon->k_bus = new KeyboardBus(libpinyinaddon);
+    littlesunaddon->bus = new FcitxLittleSunBus(littlesunaddon);
+    littlesunaddon->k_bus = new KeyboardBus(littlesunaddon);
 
-    return libpinyinaddon;
+    return littlesunaddon;
 }
 
 /**
@@ -173,12 +173,12 @@ void FcitxLittleSunDestroy(void* arg)
 
 void FcitxLittleSunReloadConfig(void* arg)
 {
-    FcitxLittleSunAddonInstance* libpinyinaddon = (FcitxLittleSunAddonInstance*) arg;
+
 }
 
 void FcitxLittleSunSave(void* arg)
 {
-    FcitxLittleSun* libpinyin = (FcitxLittleSun*) arg;
-    libpinyin->save();
+    FcitxLittleSun* liblittlesun = (FcitxLittleSun*) arg;
+    liblittlesun->save();
 }
 

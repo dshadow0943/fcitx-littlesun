@@ -1,7 +1,0 @@
-[InputMethod]
-UniqueName=keyboard-littlesun
-_Name=小太阳键盘
-IconName=pinyin
-Priority=1
-LangCode=zh_CN
-Parent=fcitx-libpinyin

@@ -26,8 +26,8 @@ set( fcitx_libpinyin_sources
 
 add_definitions( -DLOCALEDIR=\"${CMAKE_INSTALL_PREFIX}/share/locale\" )
 
-fcitx_add_addon_full(libpinyin DESC
+fcitx_add_addon_full(littlesun DESC
 SOURCES ${fcitx_libpinyin_sources}
-IM_CONFIG pinyin-libpinyin.conf
+IM_CONFIG littlesun.conf
 LINK_LIBS PkgConfig::DBus ${LIBINTL_LIBRARIES} Qt5::Core Qt5::DBus X11 Xtst
 )

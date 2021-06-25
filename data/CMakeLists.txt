@@ -1,4 +1,4 @@
-foreach(icon pinyin-libpinyin bopomofo)
+foreach(icon littlesun)
     install(FILES ${icon}.png RENAME fcitx-${icon}.png
             DESTINATION share/icons/hicolor/48x48/status/)
     install(FILES ${icon}.png
