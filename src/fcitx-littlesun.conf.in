@@ -1,0 +1,10 @@
+[Addon]
+Name=fcitx-littlesun
+_GeneralName=LittleSun
+_Comment=LittleSun Wrapper For Fcitx
+Category=InputMethod
+Enabled=True
+Library=fcitx-littlesun.so
+Type=SharedLibrary
+IMRegisterMethod=ConfigFile
+SubConfig=Dictionary
