@@ -1,0 +1,7 @@
+#ifndef FCITX_LIBPINYIN_COMMON_H
+#define FCITX_LIBPINYIN_COMMON_H
+
+#define FCITX_LIBPINYIN_PATH "/littlesun"
+#define FCITX_LIBPINYIN_INTERFACE "org.fcitx.Fcitx.LittleSun"
+
+#endif // FCITX_LIBPINYIN_COMMON_H

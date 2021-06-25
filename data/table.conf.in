@@ -1,0 +1,26 @@
+binary format version:5
+model data version:10
+lambda parameter:0.347121
+
+source table format:pinyin
+database format:@LIBPINYIN_DATABASE_FORMAT@
+
+default RESERVED NULL NULL NULL NOT_USED
+default GB_DICTIONARY gb_char.table gb_char.bin gb_char.dbin SYSTEM_FILE
+default GBK_DICTIONARY gbk_char.table gbk_char.bin gbk_char.dbin SYSTEM_FILE
+default MERGED_DICTIONARY merged.table merged.bin merged.dbin SYSTEM_FILE
+default ADDON_DICTIONARY NULL NULL addon.bin USER_FILE
+default NETWORK_DICTIONARY NULL NULL network.bin USER_FILE
+default USER_DICTIONARY NULL NULL user.bin USER_FILE
+
+addon 4 art.table art.bin NULL DICTIONARY
+addon 5 culture.table culture.bin NULL DICTIONARY
+addon 6 economy.table economy.bin NULL DICTIONARY
+addon 7 geology.table geology.bin NULL DICTIONARY
+addon 8 history.table history.bin NULL DICTIONARY
+
+addon 9 life.table life.bin NULL DICTIONARY
+addon 10 nature.table nature.bin NULL DICTIONARY
+addon 11 scitech.table scitech.bin NULL DICTIONARY
+addon 12 society.table society.bin NULL DICTIONARY
+addon 13 sport.table sport.bin NULL DICTIONARY
