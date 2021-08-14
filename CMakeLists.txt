@@ -45,7 +45,7 @@ set(CPACK_PACKAGE_VERSION_PATCH "${_VERSION_PATCH}")
 # 指定CPack生成的是deb包（还可以是其他包如 <.7z> <.zip> 等）
 set(CPACK_GENERATOR "DEB")
 # 指定包名
-set(CPACK_PACKAGE_NAME "com.fcitx-littlesun")
+set(CPACK_PACKAGE_NAME "fcitx-littlesun")
 # 指定程序名，就是程序安装后的名字
 set(CPACK_DEBIAN_PACKAGE_NAME "fcitx-littlesun")
 # 指定运行的计算机架构
