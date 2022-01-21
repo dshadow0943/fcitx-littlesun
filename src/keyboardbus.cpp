@@ -12,18 +12,15 @@ KeyboardBus::KeyboardBus(struct _FcitxLittleSunAddonInstance* libpinyin, QObject
 
 void KeyboardBus::initView()
 {
-    printf("init\n");
     m_keyboardInter->initView();
 }
 
 void KeyboardBus::showView()
 {
-    printf("show\n");
     m_keyboardInter->showView();
 }
 
 void KeyboardBus::hideView()
 {
-    printf("hide\n");
     m_keyboardInter->hideView();
 }

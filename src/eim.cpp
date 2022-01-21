@@ -18,29 +18,9 @@
  *   51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.              *
  ***************************************************************************/
 
-#include <memory>
-#include <sstream>
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
-#include <errno.h>
-#include <fcitx/ime.h>
-#include <fcitx-config/hotkey.h>
-#include <fcitx-config/xdg.h>
-#include <fcitx-utils/log.h>
-#include <fcitx-config/fcitx-config.h>
-#include <fcitx-utils/utils.h>
-#include <fcitx/instance.h>
-#include <fcitx/keys.h>
-#include <fcitx/module.h>
 #include <fcitx/context.h>
-#include <fcitx/module/punc/fcitx-punc.h>
-#include <string>
-#include <libintl.h>
 
-#include "config.h"
 #include "eim.h"
-#include "bus.h"
 #include "common.h"
 
 extern "C" {
@@ -95,20 +75,20 @@ boolean FcitxLittleSunInit(void* arg)
 
 void FcitxLittleSun::init() {
     FcitxInstanceSetContext(m_owner->owner, CONTEXT_IM_KEYBOARD_LAYOUT, "us");
+    m_isActive = true;
     m_owner->k_bus->initView();
-
 }
 
 void FcitxLittleSun::reset() {
-    m_owner->k_bus->showView();
-
+    if (m_isActive) {
+        m_owner->k_bus->showView();
+    }
 }
 
 void FcitxLittleSun::save() {
+    m_isActive = false;
     m_owner->k_bus->hideView();
-
 }
-
 
 FcitxLittleSun::FcitxLittleSun(FcitxLittleSunAddonInstance* littlesunaddon) :
     m_owner(littlesunaddon)
@@ -136,7 +116,7 @@ void* FcitxLittleSunCreate(FcitxInstance* instance)
     FcitxInstanceRegisterIM(instance,
                             littlesunaddon->pinyin,
                             "keyboard-littlesun",
-                            "小太阳键盘",
+                            "小太阳输入法",
                             "littlesun",
                             FcitxLittleSunInit,
                             FcitxLittleSunReset,

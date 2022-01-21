@@ -16,7 +16,7 @@ include_directories (
     ${LIBINTL_INCLUDE_DIR}
     )
 
-set( fcitx_libpinyin_sources
+set( fcitx_littlesun_sources
     eim.cpp
     config.cpp
     bus.cpp
@@ -27,7 +27,7 @@ set( fcitx_libpinyin_sources
 add_definitions( -DLOCALEDIR=\"${CMAKE_INSTALL_PREFIX}/share/locale\" )
 
 fcitx_add_addon_full(littlesun DESC
-SOURCES ${fcitx_libpinyin_sources}
+SOURCES ${fcitx_littlesun_sources}
 IM_CONFIG littlesun.conf
 LINK_LIBS PkgConfig::DBus ${LIBINTL_LIBRARIES} Qt5::Core Qt5::DBus X11 Xtst
 )

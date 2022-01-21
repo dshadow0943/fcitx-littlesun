@@ -2,7 +2,6 @@
 #include "eim.h"
 #include <fcitx/module/dbus/fcitx-dbus.h>
 // must keep X11 haeder under QT header
-#include <X11/XKBlib.h>
 #include <X11/Xlib.h>
 #include <X11/extensions/XTest.h>
 #include <X11/keysym.h>
@@ -21,6 +20,7 @@ const char *introspection_xml =
     "      <arg name=\"str\" direction=\"in\" type=\"s\"/>\n"
     "    </method>"
     "    <method name=\"DeleteChar\">"
+    "    <method name=\"GetStatus\">"
     "    </method>"
     "  </interface>\n"
     "</node>\n";
@@ -89,6 +89,9 @@ DBusHandlerResult FcitxLittleSunBus::dbusEvent(DBusConnection* connection, DBusM
             XCloseDisplay(disp);
         }
         reply = dbus_message_new_method_return(message);
+    } else if (dbus_message_is_method_call(message, FCITX_LIBPINYIN_INTERFACE, "GetStatus")) {
+        reply = dbus_message_new_method_return(message);
+
     } else if (dbus_message_is_method_call(message, FCITX_LIBPINYIN_INTERFACE, "CommitString")) {
         char* str = NULL;
         if (dbus_message_get_args(message, NULL, DBUS_TYPE_STRING, &str, DBUS_TYPE_INVALID)) {

@@ -3,13 +3,8 @@ project(fcitx-littlesun)
 
 set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake" ${CMAKE_MODULE_PATH})
 
-find_package(Libintl REQUIRED)
 find_package(Fcitx 4.2.8 REQUIRED)
 pkg_check_modules(DBus "dbus-1" REQUIRED IMPORTED_TARGET)
-
-find_program(LIBPINYIN_GEN_BINARY_FILES gen_binary_files HINTS "${LIBPINYIN_EXECPREFIX}/bin")
-find_program(LIBPINYIN_GEN_UNIGRAM gen_unigram HINTS "${LIBPINYIN_EXECPREFIX}/bin")
-find_program(LIBPINYIN_IMPORT_INTERPOLATION import_interpolation HINTS "${LIBPINYIN_EXECPREFIX}/bin")
 
 _fcitx_add_uninstall_target()
 
@@ -17,16 +12,6 @@ set(CMAKE_C_FLAGS "-Wall -Wextra -Wno-sign-compare -Wno-unused-parameter -fvisib
 set(CMAKE_CXX_FLAGS "-Wall -Wextra -Wno-sign-compare -Wno-unused-parameter -fvisibility=hidden ${CMAKE_CXX_FLAGS}")
 set(CMAKE_SHARED_LINKER_FLAGS "-Wl,--as-needed ${CMAKE_SHARED_LINKER_FLAGS}")
 set(CMAKE_MODULE_LINKER_FLAGS "-Wl,--as-needed ${CMAKE_MODULE_LINKER_FLAGS}")
-
-if(NOT DEFINED LIB_INSTALL_DIR)
-  set(LIB_INSTALL_DIR ${CMAKE_INSTALL_PREFIX}/lib)
-endif()
-
-if (LIBPINYIN_GEN_UNIGRAM AND LIBPINYIN_GEN_BINARY_FILES AND LIBPINYIN_IMPORT_INTERPOLATION)
-    set(LIBPINYIN_TOOLS_FOUND 1)
-else()
-    set(LIBPINYIN_TOOLS_FOUND 0)
-endif ()
 
 configure_file(config.h.in config.h)
 
@@ -51,7 +36,7 @@ set(CPACK_DEBIAN_PACKAGE_NAME "fcitx-littlesun")
 # 指定运行的计算机架构
 set(CPACK_DEBIAN_PACKAGE_ARCHITECTURE "amd64")
 # 指定所需的依赖
-# set(CPACK_DEBIAN_PACKAGE_DEPENDS "libgrpc++")
+ set(CPACK_DEBIAN_PACKAGE_DEPENDS "libx11-dev, libdbus-1-dev, fcitx-libs")
 # 设置包作者的联系方式
 set(CPACK_PACKAGE_CONTACT "dshadow@foxmail.com")
 # 设置维护人

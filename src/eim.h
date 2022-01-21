@@ -21,12 +21,6 @@
 #ifndef EIM_H
 #define EIM_H
 
-#include <fcitx/ime.h>
-#include <fcitx-config/fcitx-config.h>
-#include <fcitx/instance.h>
-#include <fcitx/candidate.h>
-#include <vector>
-#include <string>
 #include "bus.h"
 #include "common.h"
 #include "keyboardbus.h"
@@ -69,6 +63,7 @@ public:
 
 private:
     FcitxLittleSunAddonInstance* m_owner;
+    bool m_isActive = false;
 };
 
 #endif
