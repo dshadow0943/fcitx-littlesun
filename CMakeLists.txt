@@ -36,7 +36,7 @@ set(CPACK_DEBIAN_PACKAGE_NAME "fcitx-littlesun")
 # 指定运行的计算机架构
 set(CPACK_DEBIAN_PACKAGE_ARCHITECTURE "amd64")
 # 指定所需的依赖
- set(CPACK_DEBIAN_PACKAGE_DEPENDS "libx11-dev, libdbus-1-dev, fcitx-libs")
+ set(CPACK_DEBIAN_PACKAGE_DEPENDS "libx11-dev, libdbus-1-dev, fcitx-libs-dev")
 # 设置包作者的联系方式
 set(CPACK_PACKAGE_CONTACT "dshadow@foxmail.com")
 # 设置维护人
